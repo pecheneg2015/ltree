@@ -1,0 +1,51 @@
+{
+  "name": "ltree",
+  "version": "0.0.1",
+  "description": "Typescript ltree implementation",
+  "main": "src/index.ts",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "lint": "eslint",
+    "build": "webpack --mode=production ",
+    "precommit": "lint-staged",
+    "genTypes": "tsc --emitDeclarationOnly"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pecheneg2015/ltree.git"
+  },
+  "keywords": [
+    "ltree",
+    "typesript",
+    "postgresql",
+    "helpers"
+  ],
+  "author": "Dmitriy Pechenin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pecheneg2015/ltree/issues"
+  },
+  "homepage": "https://github.com/pecheneg2015/ltree#readme",
+  "packageManager": "yarn@3.3.1",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,scss,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
