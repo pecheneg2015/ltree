@@ -1,11 +1,13 @@
 start
   =  lxquery
 
-lxquery = label|1..20,'|'|
+lxquery = (anyLabel/label)|1..20,'|'|
 
-label =anyLabelNBetween/anyLabelNGE/anyLabelNLE/ anyLabelN/anyLabel
+label= val:"?"?val2:[a-zA-Z0-9]+{return  { type: 'LABEL', inverse:Boolean(val),content:val2   }}
 
-anyLabel = "*"{return { type: 'ANY_LABEL', subtype:'UNLIMITED'   }}
+anyLabel=anyLabelNBetween/anyLabelNGE/anyLabelNLE/ anyLabelN/anyLabelUnlimited
+
+anyLabelUnlimited = "*"{return { type: 'ANY_LABEL', subtype:'UNLIMITED'   }}
 anyLabelN ="*{"val:number "}"{return { type: 'ANY_LABEL', subtype:'LIMITED',min:val,max:val   }}
 anyLabelNGE ="*{"val:number ",}"{return { type: 'ANY_LABEL', subtype:'LIMITED',min:val,max:null   }}
 anyLabelNLE ="*{,"val:number "}"{return { type: 'ANY_LABEL', subtype:'LIMITED',min:null,max:val   }}
