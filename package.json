@@ -11,7 +11,7 @@
     "build": "webpack --mode=production ",
     "precommit": "lint-staged",
     "genTypes": "tsc --emitDeclarationOnly",
-    "gen": "peggy --plugin ./node_modules/ts-pegjs/dist/tspegjs.js -o ./src/grammar/test.ts  --cache ./src/grammar/test.pegjs && npx --package typescript tsc ./src/parserTest.ts && node ./src/parserTest.js"
+    "gen": "peggy --plugin ./node_modules/ts-pegjs/dist/tspegjs.js -o ./src/grammar/lqueryParser.ts  --cache ./src/grammar/lquery.pegjs && npx --package typescript tsc ./src/parserTest.ts && node ./src/parserTest.js"
   },
   "repository": {
     "type": "git",

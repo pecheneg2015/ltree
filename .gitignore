@@ -107,5 +107,6 @@ dist
 .idea
 .pnp.cjs
 .pnp.loader.mjs
-/src/grammar/
+/src/grammar/lqueryParser.js
+/src/grammar/lqueryParser.ts
 /src/parserTest.js

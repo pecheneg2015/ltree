@@ -1,9 +1,9 @@
 start
-  =  lxquery
+  =  lquery
 
-lxquery = (anyLabel/label)|1..,'|'|
+lquery = (anyLabel/label)|1..,'.'|
 
-label= val:"!"?val3:labelItem{return  { type: 'LABEL_GROUP', inverse:Boolean(val),items:val3  }}
+label= val:"!"?val3:labelItem|1..,"|"|{return  { type: 'LABEL_GROUP', inverse:Boolean(val),items:val3  }}
 labelItem =textVal:text|1|modVal:[@*%]*{const mods = modVal??[]; return  {
     type: 'LABEL', content:textVal[0],
     isCaseSensitive:mods.includes('@'),
@@ -13,7 +13,7 @@ labelItem =textVal:text|1|modVal:[@*%]*{const mods = modVal??[]; return  {
 }
 
 
-anyLabel=anyLabelNBetween/anyLabelNGE/anyLabelNLE/ anyLabelN/anyLabelUnlimited
+anyLabel=anyLabelNBetween/anyLabelNGE/anyLabelNLE/anyLabelN/anyLabelUnlimited
 anyLabelUnlimited = "*"{return { type: 'ANY_LABEL', subtype:'UNLIMITED'   }}
 anyLabelN ="*{"val:number "}"{return { type: 'ANY_LABEL', subtype:'LIMITED',limits:{min:val,max:val}   }}
 anyLabelNGE ="*{"val:number ",}"{return { type: 'ANY_LABEL', subtype:'LIMITED',limits:{min:val,max:null}   }}
