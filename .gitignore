@@ -109,4 +109,7 @@ dist
 .pnp.loader.mjs
 /src/grammar/lqueryParser.js
 /src/grammar/lqueryParser.ts
+/src/grammar/lxtqueryParser.ts
+/src/grammar/lxtqueryParser.js
 /src/parserTest.js
+/src/lxtParserTest.js

@@ -1,17 +1,15 @@
-start
-  =  lquery
+start = lquery
 
-lquery = (anyLabel/label)|1..,'.'|
+lquery = ( anyLabel / label )|1..,'.'|
 
-label= val:"!"?val3:labelItem|1..,"|"|{return  { type: 'LABEL_GROUP', inverse:Boolean(val),items:val3  }}
-labelItem =textVal:text|1|modVal:[@*%]*{const mods = modVal??[]; return  {
-    type: 'LABEL', content:textVal[0],
+label = val:"!"?val3:labelItem|1..,"|"|{return  { type: 'LABEL_GROUP', inverse:Boolean(val),items:val3  }}
+labelItem = textVal:text|1|modVal:[@*%]*{const mods = modVal??[]; return  {
+    type: 'LABEL', content:textVal,
     isCaseSensitive:mods.includes('@'),
     isPrefix: mods.includes('*'),
     isSearchByWords:mods.includes('%')
     }
 }
-
 
 anyLabel=anyLabelNBetween/anyLabelNGE/anyLabelNLE/anyLabelN/anyLabelUnlimited
 anyLabelUnlimited = "*"{return { type: 'ANY_LABEL', subtype:'UNLIMITED'   }}
@@ -22,5 +20,5 @@ anyLabelNBetween ="*{"min:number","max:number "}"{return { type: 'ANY_LABEL', su
 
 
 
-number = val:[0-9]+{return Number.parseInt(val[0])}
-text = val:[a-zA-Z0-9]+{return val[0]}
+number = val:[0-9]+{return Number.parseInt(val.join(''))}
+text = val:[a-zA-Z0-9]+{return val.join('')}
