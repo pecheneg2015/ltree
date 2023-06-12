@@ -4,7 +4,7 @@ console.log(parse("!test"));
 console.log(parse("test"));
 console.log(parse("test&test"));
 console.log(parse("test|test"));
-console.log(parse("(test&test)"));
+console.log(parse("((a|b&c))&test)"));
 console.log(parse("!!(test&test)"));
 // console.log(parse("!"));
 // console.log(parse("*.*{5}.*.*{4,}.*{1,2}.*{,4}"));
